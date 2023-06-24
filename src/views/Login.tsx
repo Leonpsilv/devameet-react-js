@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PublicInput } from "../components/general/PublicInput";
+import { Link, useSearchParams } from 'react-router-dom';
 
 import logo from "../assets/images/logo.svg";
 import loginIcon from "../assets/images/mail.svg";
@@ -13,6 +14,9 @@ export function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+
+    const [searchParams] = useSearchParams();
+    const success = searchParams.get('success');
 
     const doLogin = async () => {
         try {
@@ -43,6 +47,7 @@ export function Login() {
             <img src={logo} alt="Logo devameet" className="logo" />
             <form>
                 {error && <p className="error">{error}</p>}
+                {success && <p className='success'>Cadastro efetuado com sucesso, faça seu login.</p>}
 
                 <PublicInput
                     icon={loginIcon}
@@ -68,7 +73,7 @@ export function Login() {
 
                 <div className="link">
                     <p>Não possui uma conta?</p>
-                    <a>Faça seu cadastro agora!</a>
+                    <Link to='/register'>Faça seu cadastro agora!</Link>
                 </div>
             </form>
         </div>
