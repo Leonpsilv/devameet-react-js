@@ -180,9 +180,9 @@ export const MeetEdit = () => {
             return navigate('/');
         } catch (e: any) {
             if (e?.response?.data?.message) {
-                console.log('Erro ao efetuar login:', e?.response?.data?.message);
+                console.log('Erro ao editar sala:', e?.response?.data?.message);
             } else {
-                console.log('Erro ao efetuar login:', e);
+                console.log('Falha ao editar sala:', e);
             }
         }
     }
